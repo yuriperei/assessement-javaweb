@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.infnet.javawebinfnet.interceptor;
+
+import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+/**
+ *
+ * @author DesenvolvedorJava
+ */
+public class AutorizarInterceptor extends HandlerInterceptorAdapter {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object controller) {
+
+        String uri = request.getRequestURI();
+System.out.println(">>>>>>>>>>>" + request.getSession().getAttribute("usuario"));
+        if (uri.endsWith("login") || uri.endsWith("cadastro") || uri.contains("resources")) {
+            return true;
+        }
+
+        // ....
+        if (request.getSession().getAttribute("usuario") != null) {
+            return true;
+        }
+
+        try {
+            response.sendRedirect("login");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+}
