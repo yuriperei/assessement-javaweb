@@ -1,11 +1,13 @@
+com\infnet\javawebinfnet\controller\AutorController.class
 com\infnet\javawebinfnet\model\Usuario.class
 com\infnet\javawebinfnet\model\Editora.class
-com\infnet\javawebinfnet\model\LivroDao.class
-com\infnet\javawebinfnet\model\EditoraDao.class
-com\infnet\javawebinfnet\model\UsuarioDao.class
 com\infnet\javawebinfnet\controller\LivroController.class
 com\infnet\javawebinfnet\controller\LoginController.class
 com\infnet\javawebinfnet\model\Autor.class
+com\infnet\javawebinfnet\model\LivroDao.class
+com\infnet\javawebinfnet\model\EditoraDao.class
+com\infnet\javawebinfnet\model\UsuarioDao.class
+com\infnet\javawebinfnet\controller\EditoraController.class
 com\infnet\javawebinfnet\model\Livro.class
 com\infnet\javawebinfnet\interceptor\AutorizarInterceptor.class
 com\infnet\javawebinfnet\model\AutorDao.class

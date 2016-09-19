@@ -13,6 +13,7 @@ import com.infnet.javawebinfnet.model.Livro;
 import com.infnet.javawebinfnet.model.LivroDao;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Yuri Pereira <yuri.souza@al.infnet.edu.br>
  */
 @Controller
+@Transactional
 public class LivroController {
 
     @Autowired
@@ -39,22 +41,28 @@ public class LivroController {
 
     @RequestMapping("/livros")
     public String livros() {
+        //session.removeAttribute("livros");
         this.listarLivros();
         return "livro/index";
     }
 
-    @RequestMapping(value = "/cadastroLivro", method = RequestMethod.GET)
+    @RequestMapping(value = "/cadastroLivro")
     public String cadastrar() {
         this.listarAutores();
         this.listarEditoras();
         return "livro/cadastro";
     }
 
-    @RequestMapping(value = "/cadastroLivro", method = RequestMethod.POST)
+    @RequestMapping(value = "/manterLivro")
     public String cadastrar(Livro livro) {
         
+        if(livro.getId() == null){
+            dao.inserir(livro);
+        }else{
+            dao.alterar(livro);
+        }
         
-        
+        session.removeAttribute("livros");
         return "redirect:livros";
     }
 

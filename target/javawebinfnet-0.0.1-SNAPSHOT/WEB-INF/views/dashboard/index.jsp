@@ -50,7 +50,7 @@
             <div class="col-form-label">
 
                 <form class="form-signin" method="post" action="alterarUsuario">
-                    <h3 class="form-signin-heading">Dados do usuário</h3>
+                    <h3 class="form-signin-heading">Usuário</h3> 
                     <label for="inputNome" class="sr-only">Nome</label>
                     <input type="text" id="inputNome" class="form-control" name="nome" placeholder="Nome" value="${usuario.nome}" required autofocus>
                     <label for="inputEmail" class="sr-only">E-mail</label>

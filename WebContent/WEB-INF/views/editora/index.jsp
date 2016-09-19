@@ -16,7 +16,10 @@
 
         <!-- Bootstrap core JS -->
         <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-        <title>Editoras</title>
+
+        <!-- Custom styles for this template -->
+        <link href="resources/css/signin.css" rel="stylesheet">
+        <title>Livros</title>
     </head>
     <body>
 
@@ -33,44 +36,36 @@
                         <ul class="nav navbar-nav">
                             <li><a href="livros">Livros</a></li>
                             <li><a href="autores">Autores</a></li>
-                            <li><a href="editoras">Editoras</a></li>
+                            <li class="active"><a href="editoras">Editoras</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="dashboard">Meu Perfil</a></li>
+                            <li><a href="dashboard">Meu Perfil</a></li>
                             <li><a href="deslogar" style="background-color: #FFA500; color: #ffffff">Desconectar</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
 
-            <table class="table">
+            <table class="table table-reflow">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Nome Editora</th>
+                        <th><a href="cadastroEditora" class="btn btn-primary pull-right">Cadastrar Novo</a></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <c:forEach items="${editoras}" var="editora">
+                        <tr>
+                            <td>${editora.nome}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a type="button" class="btn btn-default">Visualizar</a>
+                                    <a type="button" class="btn btn-info">Alterar</a>
+                                    <a type="button" class="btn btn-danger">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

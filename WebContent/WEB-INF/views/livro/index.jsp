@@ -56,7 +56,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:if test="not empty ${livros}">
                     <c:forEach items="${livros}" var="livro">
                         <tr>
                             <td>${livro.titulo}</td>
@@ -71,7 +70,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                </c:if>
                 </tbody>
             </table>
         </div>

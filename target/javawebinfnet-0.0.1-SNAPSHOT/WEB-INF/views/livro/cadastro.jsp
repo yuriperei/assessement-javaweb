@@ -48,7 +48,7 @@
 
             <div class="col-form-label">
 
-                <form class="form-signin" method="post" action="cadastroLivro">
+                <form class="form-signin" method="post" action="manterLivro">
                     <h3 class="form-signin-heading">Cadastro de Livro</h3>
                     <label for="inputNome" class="input-group">Título</label>
                     <input type="text" id="inputNome" class="form-control" name="titulo" placeholder="titulo" required autofocus>
