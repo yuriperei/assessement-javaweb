@@ -32,7 +32,7 @@
                 <label for="inputPassword" class="sr-only">Senha</label>
                 <input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Senha" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
-                <a href="login" class="btn btn-dafault btn-lg btn-block">Efetuar login</a>
+                <a href="usuario" class="btn btn-dafault btn-lg btn-block">Efetuar login</a>
 
                 <c:if test="${not empty usuario}">
                     <div class="alert alert-success mensagem">

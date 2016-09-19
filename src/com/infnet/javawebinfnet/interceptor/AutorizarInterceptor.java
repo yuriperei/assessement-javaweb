@@ -20,7 +20,6 @@ public class AutorizarInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object controller) {
 
         String uri = request.getRequestURI();
-System.out.println(">>>>>>>>>>>" + request.getSession().getAttribute("usuario"));
         if (uri.endsWith("login") || uri.endsWith("cadastro") || uri.contains("resources")) {
             return true;
         }
@@ -33,8 +32,6 @@ System.out.println(">>>>>>>>>>>" + request.getSession().getAttribute("usuario"))
         try {
             response.sendRedirect("login");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
 
         return false;

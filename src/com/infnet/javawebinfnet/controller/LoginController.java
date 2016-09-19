@@ -32,23 +32,23 @@ public class LoginController {
 
     private ModelAndView retorno = new ModelAndView();
 
-    @RequestMapping(value = {"/", "/cadastro"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/cadastro"}, method = RequestMethod.GET)
     public String inicio() {
-        return "index";
+        return "usuario/cadastro";
     }
 
     @RequestMapping("/cadastro")
     public ModelAndView cadastro(Usuario usuario) {
         retorno.addObject("dados", usuario);
         dao.inserir(usuario);
-        retorno.setViewName("index");
+        retorno.setViewName("usuario/cadastro");
         return retorno;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         retorno.getModelMap().remove("erro");
-        return "login";
+        return "usuario/index";
     }
 
     @RequestMapping("/login")
@@ -61,7 +61,6 @@ public class LoginController {
                     && userBd.getEmail().equals(usuario.getEmail())
                     && userBd.getSenha().equals(usuario.getSenha())) {
                 session.setAttribute("usuario", userBd);
-                System.out.println(">>++++" + session.getAttribute("usuario"));
                 retorno.setViewName("redirect:dashboard");
             } else {
                 this.erroAcesso();
@@ -77,18 +76,18 @@ public class LoginController {
 
     @RequestMapping("/dashboard")
     public String dashboard() {
-        return "painel";
+        return "dashboard/index";
     }
 
     @RequestMapping("/deslogar")
     public String deslogar() {
         session.removeAttribute("usuario");
-        return "login";
+        return "usuario/index";
     }
 
     private void erroAcesso() {
         retorno.addObject("erro", "Os dados informado estão incorretos!");
-        retorno.setViewName("login");
+        retorno.setViewName("usuario/index");
     }
 
 }
