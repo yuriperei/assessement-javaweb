@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
  * @author DesenvolvedorJava
  */
 @Entity
-class Autor implements Serializable{
+public class Autor implements Serializable{
     
     @Id
     @GeneratedValue

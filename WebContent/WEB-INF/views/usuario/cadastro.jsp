@@ -31,6 +31,7 @@
                 <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required>
                 <label for="inputPassword" class="sr-only">Senha</label>
                 <input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Senha" required>
+
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
                 <a href="usuario" class="btn btn-dafault btn-lg btn-block">Efetuar login</a>
 
@@ -41,7 +42,7 @@
                         <b>Dados de acesso:</b> </br> E-mail: ${usuario.email}
                     </div>
                 </c:if>
-                
+
             </form>
 
 

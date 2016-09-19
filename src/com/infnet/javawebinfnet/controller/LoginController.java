@@ -32,12 +32,12 @@ public class LoginController {
 
     private ModelAndView retorno = new ModelAndView();
 
-    @RequestMapping(value = {"/cadastro"}, method = RequestMethod.GET)
+    @RequestMapping("/cadastro")
     public String inicio() {
         return "usuario/cadastro";
     }
 
-    @RequestMapping("/cadastro")
+    @RequestMapping(value = {"/cadastro"}, method = RequestMethod.POST)
     public ModelAndView cadastro(Usuario usuario) {
         retorno.addObject("dados", usuario);
         dao.inserir(usuario);
@@ -45,13 +45,13 @@ public class LoginController {
         return retorno;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String login() {
         retorno.getModelMap().remove("erro");
         return "usuario/index";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public ModelAndView login(Usuario usuario) {
 
         try {
