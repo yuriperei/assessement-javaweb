@@ -38,17 +38,40 @@ public class EditoraController {
 
     @RequestMapping(value = "/cadastroEditora")
     public String cadastrar() {
+        session.removeAttribute("editora");
         return "editora/cadastro";
     }
 
     @RequestMapping(value = "/manterEditora")
-    public String cadastrar(Editora editora) {
-        if(editora.getId() == null){
+    public String manter(Editora editora) {
+        if (editora.getId() == null) {
             dao.inserir(editora);
-        }else{
+        } else {
             dao.alterar(editora);
         }
-        session.removeAttribute("editoras");
+        this.limparSessao();
+        return "redirect:editoras";
+    }
+
+    @RequestMapping(value = "/alterarEditora")
+    public String alterar(Long id) {
+        this.buscarEditora(id);
+        return "editora/cadastro";
+    }
+
+    @RequestMapping(value = "/visualizarEditora")
+    public String visualizar(Long id) {
+        this.buscarEditora(id);
+        return "editora/visualizar";
+    }
+
+    @RequestMapping(value = "/excluirEditora")
+    public String excluir(Long id) {
+        Editora editora = dao.buscaPorId(id);
+        if (editora != null) {
+            dao.excluir(editora);
+            this.limparSessao();
+        }
         return "redirect:editoras";
     }
 
@@ -61,6 +84,18 @@ public class EditoraController {
                 session.setAttribute("editoras", editoras);
             }
         }
+    }
+
+    private void buscarEditora(Long id) {
+        Editora editora = dao.buscaPorId(id);
+        if (editora != null) {
+            session.setAttribute("editora", editora);
+        }
+    }
+
+    private void limparSessao() {
+        session.removeAttribute("editoras");
+        session.removeAttribute("livros");
     }
 
 }

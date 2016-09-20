@@ -38,8 +38,7 @@ public class UsuarioDao {
     }
 
     public void excluir(Usuario t) {
-        Usuario usuario = buscaPorId(t.getId());
-        manager.remove(usuario);
+        manager.remove(t);
     }
 
     public Usuario buscarPorEmail(final String email) throws NoResultException {

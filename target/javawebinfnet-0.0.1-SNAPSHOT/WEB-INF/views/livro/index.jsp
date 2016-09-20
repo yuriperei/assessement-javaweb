@@ -63,9 +63,9 @@
                             <td>${livro.editora.nome}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <a type="button" class="btn btn-default">Visualizar</a>
-                                    <a type="button" class="btn btn-info">Alterar</a>
-                                    <a type="button" class="btn btn-danger">Excluir</a>
+                                    <a href="visualizarLivro?id=${livro.id}" class="btn btn-default">Visualizar</a>
+                                    <a href="alterarLivro?id=${livro.id}" class="btn btn-info">Alterar</a>
+                                    <a href="excluirLivro?id=${livro.id}" class="btn btn-danger">Excluir</a>
                                 </div>
                             </td>
                         </tr>

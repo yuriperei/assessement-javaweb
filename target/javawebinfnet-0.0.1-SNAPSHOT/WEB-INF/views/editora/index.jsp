@@ -19,7 +19,7 @@
 
         <!-- Custom styles for this template -->
         <link href="resources/css/signin.css" rel="stylesheet">
-        <title>Livros</title>
+        <title>Editora</title>
     </head>
     <body>
 
@@ -59,9 +59,9 @@
                             <td>${editora.nome}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <a type="button" class="btn btn-default">Visualizar</a>
-                                    <a type="button" class="btn btn-info">Alterar</a>
-                                    <a type="button" class="btn btn-danger">Excluir</a>
+                                    <a href="visualizarEditora?id=${editora.id}" class="btn btn-default">Visualizar</a>
+                                    <a href="alterarEditora?id=${editora.id}" class="btn btn-info">Alterar</a>
+                                    <a href="excluirEditora?id=${editora.id}" class="btn btn-danger">Excluir</a>
                                 </div>
                             </td>
                         </tr>

@@ -38,8 +38,7 @@ public class LivroDao {
     }
 
     public void excluir(Livro t) {
-        Livro livro = buscaPorId(t.getId());
-        manager.remove(livro);
+        manager.remove(t);
     }
 
     public Livro buscarPorTitulo(final String titulo) throws NoResultException {

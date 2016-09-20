@@ -38,8 +38,7 @@ public class EditoraDao {
     }
 
     public void excluir(Editora t) {
-        Editora editora = buscaPorId(t.getId());
-        manager.remove(editora);
+        manager.remove(t);
     }
 
     public Editora buscarPorTitulo(final String editora) throws NoResultException {

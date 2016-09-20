@@ -50,8 +50,9 @@
 
                 <form class="form-signin" method="post" action="manterLivro">
                     <h3 class="form-signin-heading">Cadastro de Livro</h3>
+                    <input type="text" name="id" value="${livro.id}" hidden>
                     <label for="inputNome" class="input-group">Título</label>
-                    <input type="text" id="inputNome" class="form-control" name="titulo" placeholder="titulo" required autofocus>
+                    <input type="text" id="inputNome" class="form-control" name="titulo" value="${livro.titulo}" placeholder="titulo" required autofocus>
                     <label for="inputNome" class="input-group">Escolha o autor</label>
                     <select class="form-control select"
                             data-placeholder="Selecione o autor" name="autor.id"

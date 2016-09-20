@@ -38,8 +38,7 @@ public class AutorDao {
     }
 
     public void excluir(Autor t) {
-        Autor autor = buscaPorId(t.getId());
-        manager.remove(autor);
+        manager.remove(t);
     }
 
     public Autor buscarPorNome(final String nome) throws NoResultException {

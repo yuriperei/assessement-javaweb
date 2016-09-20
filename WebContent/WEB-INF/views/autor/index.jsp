@@ -59,9 +59,9 @@
                             <td>${autor.nome}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <a type="button" class="btn btn-default">Visualizar</a>
-                                    <a type="button" class="btn btn-info">Alterar</a>
-                                    <a type="button" class="btn btn-danger">Excluir</a>
+                                   <a href="visualizarAutor?id=${autor.id}" class="btn btn-default">Visualizar</a>
+                                    <a href="alterarAutor?id=${autor.id}" class="btn btn-info">Alterar</a>
+                                    <a href="excluirAutor?id=${autor.id}" class="btn btn-danger">Excluir</a>
                                 </div>
                             </td>
                         </tr>

@@ -17,7 +17,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -48,13 +47,14 @@ public class LivroController {
 
     @RequestMapping(value = "/cadastroLivro")
     public String cadastrar() {
+        session.removeAttribute("livro");
         this.listarAutores();
         this.listarEditoras();
         return "livro/cadastro";
     }
 
     @RequestMapping(value = "/manterLivro")
-    public String cadastrar(Livro livro) {
+    public String manter(Livro livro) {
         
         if(livro.getId() == null){
             dao.inserir(livro);
@@ -64,6 +64,35 @@ public class LivroController {
         
         session.removeAttribute("livros");
         return "redirect:livros";
+    }
+    
+      @RequestMapping(value = "/alterarLivro")
+    public String alterar(Long id) {
+        this.buscarLivro(id);
+        return "livro/cadastro";
+    }
+
+    @RequestMapping(value = "/visualizarLivro")
+    public String visualizar(Long id) {
+        this.buscarLivro(id);
+        return "livro/visualizar";
+    }
+
+    @RequestMapping(value = "/excluirLivro")
+    public String excluir(Long id) {
+        Livro livro = dao.buscaPorId(id);
+        if (livro != null) {
+            dao.excluir(livro);
+            session.removeAttribute("livros");
+        }
+        return "redirect:livros";
+    }
+    
+      private void buscarLivro(Long id){
+        Livro livro = dao.buscaPorId(id);
+        if (livro != null) {
+            session.setAttribute("livro", livro);
+        }
     }
 
     private void listarAutores() {
