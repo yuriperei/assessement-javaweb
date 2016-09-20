@@ -49,8 +49,9 @@
 
             <div class="col-form-label">
 
-                <form class="form-signin" method="post" action="alterarUsuario">
+                <form class="form-signin" method="post" action="manterUsuario">
                     <h3 class="form-signin-heading">Usuário</h3> 
+                    <input type="text" name="id" value="${usuario.id}" hidden>
                     <label for="inputNome" class="sr-only">Nome</label>
                     <input type="text" id="inputNome" class="form-control" name="nome" placeholder="Nome" value="${usuario.nome}" required autofocus>
                     <label for="inputEmail" class="sr-only">E-mail</label>
@@ -61,7 +62,7 @@
                     <a href="#" class="btn btn-dafault btn-lg btn-block">Quero apagar minha conta!</a>
                     <c:if test="${not empty mensagem}">
                         <div class="alert alert-success mensagem">
-                            <b>${usuario.nome}</b>, seus dados foram alterados com sucesso!
+                            <b>${usuario.nome}</b>, ${mensagem} 
                         </div>
                     </c:if>
 

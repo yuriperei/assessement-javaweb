@@ -20,7 +20,7 @@ public class AutorizarInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object controller) {
 
         String uri = request.getRequestURI();
-        if (uri.endsWith("login") || uri.endsWith("cadastro") || uri.contains("resources")) {
+        if (uri.endsWith("login") || uri.endsWith("manterUsuario") || uri.endsWith("cadastro") || uri.contains("resources")) {
             return true;
         }
 

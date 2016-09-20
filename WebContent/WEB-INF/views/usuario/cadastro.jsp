@@ -23,7 +23,7 @@
 
         <div class="container">
 
-            <form class="form-signin" method="post" action="cadastro">
+            <form class="form-signin" method="post" action="manterUsuario">
                 <h3 class="form-signin-heading">Cadastro de usuário</h3>
                 <label for="inputNome" class="sr-only">Nome</label>
                 <input type="text" id="inputNome" class="form-control" name="nome" placeholder="Nome" required autofocus>

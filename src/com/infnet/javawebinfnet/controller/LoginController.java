@@ -37,11 +37,29 @@ public class LoginController {
         return "usuario/cadastro";
     }
 
-    @RequestMapping(value = {"/cadastro"}, method = RequestMethod.POST)
-    public ModelAndView cadastro(Usuario usuario) {
-        retorno.addObject("dados", usuario);
-        dao.inserir(usuario);
-        retorno.setViewName("usuario/cadastro");
+    @RequestMapping(value = {"/manterUsuario"}, method = RequestMethod.POST)
+    public ModelAndView manter(Usuario usuario) {
+        System.out.println("CHAMOUUUUUUUUUUU");
+        System.out.println(">>>><<<<"+ usuario.getId());
+        if (usuario.getId() == null) {
+            System.out.println("DAOOOOOO INSERIR USUARIO");
+            dao.inserir(usuario);
+            System.out.println("DEPOIS DO DAOOOOOO INSERIR USUARIO");
+            retorno.setViewName("usuario/cadastro");
+        } else {
+
+            if (usuario.getSenha().isEmpty() || usuario.getSenha() == null) {
+                Usuario userDb = dao.buscaPorId(usuario.getId());
+                usuario.setSenha(userDb.getSenha());
+            }
+
+            dao.alterar(usuario);
+            retorno.setViewName("dashboard/index");
+            retorno.addObject("mensagem", "seus dados foram alterados com sucesso!");
+        }
+
+        retorno.addObject("usuario", usuario);
+
         return retorno;
     }
 
