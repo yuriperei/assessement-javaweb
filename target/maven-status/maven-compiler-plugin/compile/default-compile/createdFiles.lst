@@ -2,6 +2,7 @@ com\infnet\javawebinfnet\controller\AutorController.class
 com\infnet\javawebinfnet\model\Usuario.class
 com\infnet\javawebinfnet\model\Editora.class
 com\infnet\javawebinfnet\controller\LivroController.class
+com\infnet\javawebinfnet\controller\LivroWSController.class
 com\infnet\javawebinfnet\controller\LoginController.class
 com\infnet\javawebinfnet\model\Autor.class
 com\infnet\javawebinfnet\model\LivroDao.class

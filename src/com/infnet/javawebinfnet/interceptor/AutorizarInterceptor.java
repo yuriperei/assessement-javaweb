@@ -23,6 +23,10 @@ public class AutorizarInterceptor extends HandlerInterceptorAdapter {
         if (uri.endsWith("login") || uri.endsWith("manterUsuario") || uri.endsWith("cadastro") || uri.contains("resources")) {
             return true;
         }
+        
+        if(uri.endsWith("livrosWS") || uri.contains("livroWS/")){
+            return true;
+        }
 
         // ....
         if (request.getSession().getAttribute("usuario") != null) {
