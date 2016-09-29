@@ -39,12 +39,8 @@ public class LoginController {
 
     @RequestMapping(value = {"/manterUsuario"}, method = RequestMethod.POST)
     public ModelAndView manter(Usuario usuario) {
-        System.out.println("CHAMOUUUUUUUUUUU");
-        System.out.println(">>>><<<<"+ usuario.getId());
         if (usuario.getId() == null) {
-            System.out.println("DAOOOOOO INSERIR USUARIO");
             dao.inserir(usuario);
-            System.out.println("DEPOIS DO DAOOOOOO INSERIR USUARIO");
             retorno.setViewName("usuario/cadastro");
         } else {
 
@@ -67,6 +63,22 @@ public class LoginController {
     public String login() {
         retorno.getModelMap().remove("erro");
         return "usuario/index";
+    }
+
+    @RequestMapping(value = "/excluirUsuario")
+    public ModelAndView excluir(Long id) {
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario.getId() == id) {
+            session.removeAttribute("usuario");
+            usuario = dao.buscaPorId(id);
+            dao.excluir(usuario);
+            retorno.setViewName("redirect:login");
+        } else {
+            retorno.addObject("mensagem", "Você não tem permissão para excluir esse usuário!");
+            retorno.setViewName("dashboard/index");
+        }
+
+        return retorno;
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)

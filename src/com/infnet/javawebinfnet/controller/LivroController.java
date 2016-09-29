@@ -55,20 +55,22 @@ public class LivroController {
 
     @RequestMapping(value = "/manterLivro")
     public String manter(Livro livro) {
-        
-        if(livro.getId() == null){
+
+        if (livro.getId() == null) {
             dao.inserir(livro);
-        }else{
+        } else {
             dao.alterar(livro);
         }
-        
+
         session.removeAttribute("livros");
         return "redirect:livros";
     }
-    
-      @RequestMapping(value = "/alterarLivro")
+
+    @RequestMapping(value = "/alterarLivro")
     public String alterar(Long id) {
         this.buscarLivro(id);
+        this.listarAutores();
+        this.listarEditoras();
         return "livro/cadastro";
     }
 
@@ -87,8 +89,8 @@ public class LivroController {
         }
         return "redirect:livros";
     }
-    
-      private void buscarLivro(Long id){
+
+    private void buscarLivro(Long id) {
         Livro livro = dao.buscaPorId(id);
         if (livro != null) {
             session.setAttribute("livro", livro);

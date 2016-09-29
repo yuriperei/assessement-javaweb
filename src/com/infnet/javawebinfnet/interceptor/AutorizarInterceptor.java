@@ -24,7 +24,7 @@ public class AutorizarInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
         
-        if(uri.endsWith("livrosWS") || uri.contains("livroWS/")){
+        if(uri.endsWith("livrosWS") || uri.contains("livroWS")){
             return true;
         }
 

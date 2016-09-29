@@ -6,10 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+        <!--JQuery Datapicker-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <!-- Bootstrap core CSS -->
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -53,12 +59,21 @@
                     <input type="text" name="id" value="${livro.id}" hidden>
                     <label for="inputNome" class="input-group">Título</label>
                     <input type="text" id="inputNome" class="form-control" name="titulo" value="${livro.titulo}" placeholder="titulo" required autofocus>
+                    <label for="inputNome" class="input-group">Data de Lançamento</label>
+                    <input id="datepicker" name="lancamento" class="form-control" type="datetime" value="<fmt:formatDate value="${livro.lancamento}" pattern="dd/MM/yyyy"/>" readonly="true"/>
                     <label for="inputNome" class="input-group">Escolha o autor</label>
                     <select class="form-control select"
                             data-placeholder="Selecione o autor" name="autor.id"
                             id="inputNome" required>
                         <c:forEach items="${autores}" var="autor">
-                            <option value="${autor.id}">${autor.nome}</option>
+                            <c:choose>
+                                <c:when test="${autor.id == livro.autor.id}">
+                                    <option value="${autor.id}" selected="">${autor.nome}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${autor.id}">${autor.nome}</option>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </select>
                     <label for="inputNome" class="input-group">Escolha a editora</label>
@@ -66,7 +81,14 @@
                             data-placeholder="Selecione a editora" name="editora.id"
                             id="inputPassword" required>
                         <c:forEach items="${editoras}" var="editora">
-                            <option value="${editora.id}">${editora.nome}</option>
+                            <c:choose>
+                                <c:when test="${editora.id == livro.editora.id}">
+                                    <option value="${editora.id}" selected="">${editora.nome}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${editora.id}">${editora.nome}</option>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </select>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
@@ -75,5 +97,10 @@
             </div>
 
         </div>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+            });
+        </script>
     </body>
 </html>

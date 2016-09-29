@@ -6,10 +6,14 @@
 package com.infnet.javawebinfnet.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -22,6 +26,10 @@ public class Livro implements Serializable{
     @GeneratedValue
     private Long id;
     private String titulo;
+    
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yy")
+    private Date lancamento;
     
     @ManyToOne
     private Autor autor;
@@ -60,6 +68,17 @@ public class Livro implements Serializable{
     public void setEditora(Editora editora) {
         this.editora = editora;
     }
+
+    public Date getLancamento() {
+        return lancamento;
+    }
+
+    public void setLancamento(Date lancamento) {
+        this.lancamento = lancamento;
+    }
+
+    
+    
 
     @Override
     public int hashCode() {

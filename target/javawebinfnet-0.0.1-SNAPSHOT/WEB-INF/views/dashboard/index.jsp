@@ -59,7 +59,7 @@
                     <label for="inputPassword" class="sr-only">Senha</label>
                     <input type="password" id="inputPassword" class="form-control" name="senha" placeholder="Informe caso queira alterar a senha">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
-                    <a href="#" class="btn btn-dafault btn-lg btn-block">Quero apagar minha conta!</a>
+                    <a href="excluirUsuario?id=${usuario.id}" class="btn btn-dafault btn-lg btn-block">Quero apagar minha conta!</a>
                     <c:if test="${not empty mensagem}">
                         <div class="alert alert-success mensagem">
                             <b>${usuario.nome}</b>, ${mensagem} 
